@@ -998,6 +998,105 @@
       font-size: 13px;
     }
 
+    .qr-panel {
+      max-width: 940px;
+      margin: 22px auto 0;
+      padding: 22px;
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 22px;
+      background:
+        linear-gradient(135deg, rgba(77,243,167,.10), transparent 34%),
+        rgba(6, 8, 16, .44);
+      text-align: left;
+      overflow: hidden;
+    }
+
+    .qr-panel-header {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    .qr-panel h3 {
+      font-size: 20px;
+      letter-spacing: -.02em;
+    }
+
+    .qr-panel-header span,
+    .qr-card span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .qr-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .qr-card {
+      position: relative;
+      overflow: hidden;
+      padding: 14px;
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 18px;
+      background: rgba(255,255,255,.045);
+      transition: transform .28s ease, border-color .28s ease, background .28s ease;
+    }
+
+    .qr-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(77,243,167,.34);
+      background: rgba(255,255,255,.07);
+    }
+
+    .qr-image-wrap {
+      position: relative;
+      padding: 10px;
+      margin-bottom: 12px;
+      border-radius: 16px;
+      background: #ffffff;
+      box-shadow: 0 18px 36px rgba(0,0,0,.24);
+    }
+
+    .qr-image-wrap::after {
+      content: "";
+      position: absolute;
+      left: 10px;
+      right: 10px;
+      top: 10px;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, transparent, rgba(77,243,167,.92), transparent);
+      box-shadow: 0 0 18px rgba(77,243,167,.5);
+      animation: qrScan 2.8s ease-in-out infinite;
+    }
+
+    .qr-card img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: contain;
+      border-radius: 10px;
+    }
+
+    .qr-card h4 {
+      margin-bottom: 4px;
+      font-size: 15px;
+    }
+
+    @keyframes qrScan {
+      0%, 100% {
+        top: 10px;
+        opacity: .18;
+      }
+      50% {
+        top: calc(100% - 12px);
+        opacity: 1;
+      }
+    }
+
     .contribution-grid {
       display: grid;
       grid-template-columns: repeat(26, 1fr);
@@ -1215,9 +1314,27 @@
         gap: 6px;
       }
 
+      .qr-panel {
+        padding: 16px;
+      }
+
+      .qr-panel-header {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .qr-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
       .contribution-grid {
         grid-template-columns: repeat(13, 1fr);
         gap: 5px;
+      }
+
+      .qr-card h4 {
+        font-size: 14px;
       }
     }
 
@@ -1583,6 +1700,50 @@
               <span>Animated coding streak</span>
             </div>
             <div class="contribution-grid" id="contributionGrid" aria-label="Animated GitHub contribution graph"></div>
+          </div>
+
+          <div class="qr-panel">
+            <div class="qr-panel-header">
+              <div>
+                <h3>Quick scan contacts</h3>
+                <span>Scan to save or open my profiles instantly</span>
+              </div>
+              <span>Phone • Facebook • GitHub • Email</span>
+            </div>
+
+            <div class="qr-grid">
+              <article class="qr-card">
+                <div class="qr-image-wrap">
+                  <img src="assets/qr-contact.png" alt="QR code to save Garry earl D. lontes phone contact" />
+                </div>
+                <h4>Phone Contact</h4>
+                <span>Save 09811825080</span>
+              </article>
+
+              <article class="qr-card">
+                <div class="qr-image-wrap">
+                  <img src="assets/qr-facebook.png" alt="QR code for Garry earl D. lontes Facebook profile" />
+                </div>
+                <h4>Facebook</h4>
+                <span>Open profile</span>
+              </article>
+
+              <article class="qr-card">
+                <div class="qr-image-wrap">
+                  <img src="assets/qr-github.png" alt="QR code for Garry earl D. lontes GitHub profile" />
+                </div>
+                <h4>GitHub</h4>
+                <span>@bogs212000</span>
+              </article>
+
+              <article class="qr-card">
+                <div class="qr-image-wrap">
+                  <img src="assets/qr-email.png" alt="QR code to email Garry earl D. lontes" />
+                </div>
+                <h4>Email</h4>
+                <span>earllontes@gmail.com</span>
+              </article>
+            </div>
           </div>
 
           <div class="contact-links">
