@@ -649,6 +649,144 @@
       color: #c8bdff;
     }
 
+    .ongoing-wrap {
+      display: grid;
+      grid-template-columns: .78fr 1.22fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .ongoing-count {
+      position: relative;
+      overflow: hidden;
+      min-height: 360px;
+      padding: 34px;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 24px;
+      background:
+        linear-gradient(135deg, rgba(77,243,167,.18), transparent 34%),
+        linear-gradient(315deg, rgba(255,78,205,.16), transparent 36%),
+        rgba(255,255,255,.055);
+      box-shadow: var(--shadow);
+    }
+
+    .ongoing-count::after {
+      content: "";
+      position: absolute;
+      width: 190px;
+      height: 190px;
+      right: -70px;
+      bottom: -70px;
+      border-radius: 50%;
+      background: rgba(35,213,255,.16);
+      filter: blur(2px);
+    }
+
+    .ongoing-count small {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+    }
+
+    .ongoing-count strong {
+      display: block;
+      margin: 24px 0 10px;
+      font-size: clamp(96px, 16vw, 168px);
+      line-height: .8;
+      letter-spacing: -.06em;
+      background: linear-gradient(135deg, #ffffff, var(--success), var(--secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: countGlow 4s ease-in-out infinite;
+    }
+
+    .ongoing-count p {
+      position: relative;
+      z-index: 1;
+      max-width: 330px;
+      color: var(--muted);
+    }
+
+    .ongoing-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .ongoing-item {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 18px;
+      align-items: center;
+      padding: 22px;
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 18px;
+      background: rgba(255,255,255,.045);
+      box-shadow: 0 16px 44px rgba(0,0,0,.22);
+      transition: transform .28s ease, border-color .28s ease, background .28s ease;
+    }
+
+    .ongoing-item:hover {
+      transform: translateX(8px);
+      border-color: rgba(77,243,167,.42);
+      background: rgba(255,255,255,.07);
+    }
+
+    .ongoing-icon {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      color: #071018;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--success), var(--secondary));
+      box-shadow: 0 0 30px rgba(77,243,167,.18);
+    }
+
+    .ongoing-item h3 {
+      font-size: 20px;
+      margin-bottom: 4px;
+    }
+
+    .ongoing-item p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .ongoing-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      color: #dfffee;
+      font-size: 12px;
+      background: rgba(77,243,167,.12);
+      border: 1px solid rgba(77,243,167,.2);
+      white-space: nowrap;
+    }
+
+    .ongoing-status::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--success);
+      box-shadow: 0 0 12px var(--success);
+    }
+
+    @keyframes countGlow {
+      0%, 100% {
+        filter: drop-shadow(0 0 0 rgba(77,243,167,0));
+      }
+      50% {
+        filter: drop-shadow(0 0 22px rgba(77,243,167,.28));
+      }
+    }
+
     .timeline {
       position: relative;
       margin-top: 20px;
@@ -858,7 +996,8 @@
 
     @media (max-width: 900px) {
       .hero-grid,
-      .about-grid {
+      .about-grid,
+      .ongoing-wrap {
         grid-template-columns: 1fr;
       }
 
@@ -934,6 +1073,19 @@
         grid-template-columns: 1fr;
       }
 
+      .ongoing-count {
+        min-height: 280px;
+      }
+
+      .ongoing-item {
+        grid-template-columns: 1fr;
+      }
+
+      .ongoing-icon {
+        width: 44px;
+        height: 44px;
+      }
+
       section {
         padding: 86px 0;
       }
@@ -986,6 +1138,7 @@
       <a href="#home" class="active">Home</a>
       <a href="#about">About</a>
       <a href="#projects">Projects</a>
+      <a href="#ongoing">Ongoing</a>
       <a href="#experience">Experience</a>
       <a href="#contact">Contact</a>
     </div>
@@ -1169,6 +1322,61 @@
               <a href="#" class="project-link">View project →</a>
             </div>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="ongoing">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div>
+            <div class="eyebrow">Active pipeline</div>
+            <h2>Ongoing projects.</h2>
+          </div>
+          <p>
+            I currently have 3 ongoing projects across mobile, web, and dashboard work,
+            with each one moving through active development.
+          </p>
+        </div>
+
+        <div class="ongoing-wrap">
+          <div class="ongoing-count reveal-left">
+            <small>Currently building</small>
+            <strong>3</strong>
+            <p>
+              Active projects in progress, focused on practical systems, clean interfaces,
+              and reliable day-to-day use.
+            </p>
+          </div>
+
+          <div class="ongoing-list reveal-right">
+            <article class="ongoing-item">
+              <div class="ongoing-icon">01</div>
+              <div>
+                <h3>Boarding House Finder</h3>
+                <p>Improving room discovery, reservation flow, and mobile user experience.</p>
+              </div>
+              <span class="ongoing-status">In progress</span>
+            </article>
+
+            <article class="ongoing-item">
+              <div class="ongoing-icon">02</div>
+              <div>
+                <h3>eMarket Platform</h3>
+                <p>Building marketplace features for listings, browsing, and secure data handling.</p>
+              </div>
+              <span class="ongoing-status">In progress</span>
+            </article>
+
+            <article class="ongoing-item">
+              <div class="ongoing-icon">03</div>
+              <div>
+                <h3>Admin Analytics Dashboard</h3>
+                <p>Creating responsive views for reports, user activity, and performance monitoring.</p>
+              </div>
+              <span class="ongoing-status">In progress</span>
+            </article>
+          </div>
         </div>
       </div>
     </section>
